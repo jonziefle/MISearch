@@ -1,23 +1,27 @@
 import os
 import sys
+import timeit
 import openpyxl
 
 # main function
 def main():
+    # start program timer
+    start_time = timeit.default_timer()
+
     # parses command line for files
     if (len(sys.argv) <= 1):
-        print "Please enter a filename."
+        print "ERROR: Please enter a filename."
         sys.exit()
 
     # iterates through all files
     for file_input in sys.argv[1:]:
-        print "Analyzing " + file_input
+        print "Analyzing: \"" + file_input + "\""
 
         # opens input file
         try:
             wb_input = openpyxl.load_workbook(file_input, data_only=True)
         except:
-            print "Invalid filename."
+            print "ERROR: Invalid filename \"" + file_input + "\""
             continue
 
         # reads from input file
@@ -101,11 +105,16 @@ def main():
         file_output = os.path.splitext(file_input)[0] + "_results.xlsx"
 
         try:
-            print "Writing " + file_output
+            print "Writing: \"" + file_output + "\""
             wb_output.save(file_output)
         except:
-            print "Please close output file."
+            print "ERROR: Please close output file."
             continue
+
+    # end program timer
+    end_time = timeit.default_timer()
+    elapsed_time = end_time - start_time
+    print "Elapsed time: {:0.2f} seconds".format(elapsed_time)
 
 if __name__ == '__main__':
     main()
