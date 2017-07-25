@@ -53,4 +53,4 @@ These instructions will get you a copy of the project up and running on your loc
 * **Elizabeth Hecht** - *Inspiration and scientific descriptions*
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
